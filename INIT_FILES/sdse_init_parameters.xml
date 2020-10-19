@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- More details about parameters in the doxygen documentation -->
+<federation>
+    <federationName>
+        <value>sdse_hla13</value>
+        <documentation>Name of the federation</documentation>
+    </federationName>
+    <fedFile>
+        <value>sdse_hla1516.xml</value>
+        <documentation>Name of the federation file</documentation>
+    </fedFile>
+    <MAIN_CONTROLLER federateName="Main_Controller_Fed"/>
+    <JOYSTICK federateName="Joystick_Fed">
+        <input>
+            <Aileron>
+            	<value>0</value>
+                <possibleValues>[[0,6]]</possibleValues>
+                <documentation>Select the number of the axis</documentation>
+            </Aileron>
+            <Elevator>
+            	<value>1</value>
+                <possibleValues>[[0,6]]</possibleValues>
+                <documentation>Select the number of the axis</documentation>
+            </Elevator>
+            <Rudder>
+            	<value>2</value>
+                <possibleValues>[[0,6]]</possibleValues>
+                <documentation>Select the number of the axis</documentation>
+            </Rudder>
+            <Throttle_Left>
+            	<value>3</value>
+                <possibleValues>[[0,6]]</possibleValues>
+                <documentation>Select the number of the axis</documentation>
+            </Throttle_Left>
+            <Throttle_Right>
+            	<value>3</value>
+                <possibleValues>[[0,6]]</possibleValues>
+                <documentation>Select the number of the axis</documentation>
+            </Throttle_Right>
+            <Flaps_Up>
+            	<value>0</value>
+                <possibleValues>[[0,23]]</possibleValues>
+                <documentation>Select the number of the button</documentation>
+            </Flaps_Up>
+            <Flaps_Down>
+            	<value>1</value>
+                <possibleValues>[[0,23]]</possibleValues>
+                <documentation>Select the number of the button</documentation>
+            </Flaps_Down>
+            <Spoilers>
+            	<value>2</value>
+                <possibleValues>[[0,23]]</possibleValues>
+                <documentation>Select the number of the button</documentation>
+            </Spoilers>
+            <Gears>
+            	<value>3</value>
+                <possibleValues>[[0,23]]</possibleValues>
+                <documentation>Select the number of the button</documentation>
+            </Gears>
+            <Brakes>
+            	<value>4</value>
+                <possibleValues>[[0,23]]</possibleValues>
+                <documentation>Select the number of the button</documentation>
+            </Brakes>
+        </input>
+        <port>
+            <Aileron>
+            	<value>0</value>
+                <possibleValues>[[0,1]]</possibleValues>
+                <documentation>Select the joystick the input will come from</documentation>
+            </Aileron>
+            <Elevator>
+            	<value>0</value>
+                <possibleValues>[[0,1]]</possibleValues>
+                <documentation>Select the joystick the input will come from</documentation>
+            </Elevator>
+            <Rudder>
+            	<value>0</value>
+                <possibleValues>[[0,1]]</possibleValues>
+                <documentation>Select the joystick the input will come from</documentation>
+            </Rudder>
+            <Throttle_Left>
+            	<value>0</value>
+                <possibleValues>[[0,1]]</possibleValues>
+                <documentation>Select the joystick the input will come from</documentation>
+            </Throttle_Left>
+            <Throttle_Right>
+            	<value>0</value>
+                <possibleValues>[[0,1]]</possibleValues>
+                <documentation>Select the joystick the input will come from</documentation>
+            </Throttle_Right>
+            <Flaps_Up>
+            	<value>0</value>
+                <possibleValues>[[0,1]]</possibleValues>
+                <documentation>Select the joystick the input will come from</documentation>
+            </Flaps_Up>
+            <Flaps_Down>
+            	<value>0</value>
+                <possibleValues>[[0,1]]</possibleValues>
+                <documentation>Select the joystick the input will come from</documentation>
+            </Flaps_Down>
+            <Spoilers>
+            	<value>0</value>
+                <possibleValues>[[0,1]]</possibleValues>
+                <documentation>Select the joystick the input will come from</documentation>
+            </Spoilers>
+            <Gears>
+            	<value>0</value>
+                <possibleValues>[[0,1]]</possibleValues>
+                <documentation>Select the joystick the input will come from</documentation>
+            </Gears>
+            <Brakes>
+            	<value>0</value>
+                <possibleValues>[[0,1]]</possibleValues>
+                <documentation>Select the joystick the input will come from</documentation>
+            </Brakes>
+        </port>
+        <sensitivity>
+            <Aileron>
+            	<value>1</value>
+                <possibleValues>[-1,1]</possibleValues>
+                <documentation>Change this value to set joystick effectiveness or reverse the input</documentation>
+            </Aileron>
+            <Elevator>
+            	<value>1</value>
+                <possibleValues>[-1,1]</possibleValues>
+                <documentation>Change this value to set joystick effectiveness or reverse the input</documentation>
+            </Elevator>
+            <Rudder>
+            	<value>1</value>
+                <possibleValues>[-1,1]</possibleValues>
+                <documentation>Change this value to set joystick effectiveness or reverse the input</documentation>
+            </Rudder>
+            <Throttle_Left>
+            	<value>1</value>
+                <possibleValues>[[-1,1]]</possibleValues>
+                <documentation>Change this value to reverse the input</documentation>
+            </Throttle_Left>
+            <Throttle_Right>
+            	<value>1</value>
+                <possibleValues>[[-1,1]]</possibleValues>
+                <documentation>Change this value to reverse the input</documentation>
+            </Throttle_Right>
+        </sensitivity>
+        <rt_timer>
+            <Enabled>
+            	<value>1</value>
+                <possibleValues type="enum">No,Yes</possibleValues>
+                <documentation>Use this if you need that the joystick trigger the simulation with 20 milliseconds pulses</documentation>
+            </Enabled>
+		</rt_timer>
+    </JOYSTICK>
+    <EFCS federateName="EFCS_Fed">
+		<simulation_loop>
+            <Sample_Time unit="seconds">
+                <value>0.02</value>
+                <documentation>Sample Time (Frequency) at which the EFCS Federate will compute during simulation</documentation>
+            </Sample_Time>
+            <Discretization_Type unit="NA">
+                <value>1</value>
+                <documentation>EFCS Computation method :
+					  0 : Tustin
+					  1 : Simple
+			    </documentation>
+            </Discretization_Type>
+        </simulation_loop>
+		<Bridge_Status>
+            <Enabled>
+                <value>0</value>
+                <documentation>Is EFCS bridge Enabled for external handling of EFCS (Not HLA, real target)</documentation>
+            </Enabled>
+        </Bridge_Status>
+		<Bridge_Net_Config>
+            <UDP_port>
+                <value>6067</value>
+                <documentation>UDP port for communication with flighgear using native protocol</documentation>
+            </UDP_port>
+            <Trimming_UDP_port>
+                <value>6068</value>
+                <documentation>UDP port for communication with flighgear using native protocol</documentation>
+            </Trimming_UDP_port>
+            <IP_Address>
+                <value>127.0.0.1</value>
+                <documentation>IP Address of the flighgear interface
+                               Note that for localhost IP address is 127.0.0.1</documentation>
+            </IP_Address>
+        </Bridge_Net_Config>
+		<Efcs_Net_Config>
+            <UDP_port>
+                <value>6069</value>
+                <documentation>UDP port for communication with flighgear using native protocol</documentation>
+            </UDP_port>
+            <IP_Address>
+                <value>127.0.0.1</value>
+                <documentation>IP Address of the flighgear interface
+                               Note that for localhost IP address is 127.0.0.1</documentation>
+            </IP_Address>
+        </Efcs_Net_Config>
+	</EFCS>
+    <CONTROL_SURFACES federateName="Control_Surfaces_Fed">
+		<simulation_loop>
+            <Delta_t_Init unit="seconds">
+                <value>0.01</value>
+                <documentation>Discretisation Step of the integration Method</documentation>
+            </Delta_t_Init>
+            <Iteration_Steps unit="NA">
+                <value>1</value>
+                <documentation>Number of integration method step within one federate cycle</documentation>
+            </Iteration_Steps>
+            <Integration_Method unit="NA">
+                <value>2</value>
+                <documentation>Type of numerical integration method :
+					  0 : None
+					  1 : Euler (Explicit)
+					  2 : Trapezoidal (Explicit)
+					  3 : Adams Bashforth 2 (Explicit)
+					  4 : Adams Bashforth 3 (Explicit)
+				  </documentation>
+            </Integration_Method>
+            <Saturation>
+                <value>1</value>
+                <possibleValues type="enum">No,Yes</possibleValues>
+                <documentation>Use control surface limitations set in the aircraft model</documentation>
+            </Saturation>
+        </simulation_loop>
+    </CONTROL_SURFACES>
+    <ENGINES federateName="Engines_Fed">
+		<simulation_loop>
+            <Delta_t_Init unit="seconds">
+                <value>0.01</value>
+                <documentation>Discretisation Step of the integration Method</documentation>
+            </Delta_t_Init>
+            <Iteration_Steps unit="NA">
+                <value>1</value>
+                <documentation>Number of integration method step within one federate cycle</documentation>
+            </Iteration_Steps>
+            <Integration_Method unit="NA">
+                <value>2</value>
+                <documentation>Type of numerical integration method :
+					  0 : None
+					  1 : Euler (Explicit)
+					  2 : Trapezoidal (Explicit)
+					  3 : Adams Bashforth 2 (Explicit)
+					  4 : Adams Bashforth 3 (Explicit)
+				  </documentation>
+            </Integration_Method>
+        </simulation_loop>
+	</ENGINES>
+    <FLIGHT_DYNAMICS federateName="Flight_Dynamics_Fed">
+        <init>
+            <AltitudeInit unit="m">
+                <value>500</value>
+            </AltitudeInit>
+            <VitesseInit unit="m/s">
+                <value>150</value>
+            </VitesseInit>
+            <LongitudeInit unit="deg">
+                <value>-122.3919</value>
+                <possibleValues>[-180,180]</possibleValues>
+            </LongitudeInit>
+            <LatitudeInit unit="deg">
+                <value>37.6262</value>
+                <possibleValues>[-90,90]</possibleValues>
+            </LatitudeInit>
+            <HeadingInit unit="deg">
+                <value>0</value>
+                <possibleValues>[0,359]</possibleValues>
+            </HeadingInit>
+            <TankFilling>
+                <value>1</value>
+                <possibleValues>[0,1]</possibleValues>
+                <documentation>0 means empty and 1 full tanks</documentation>
+            </TankFilling>
+        </init>
+        <simulation_loop>
+            <Delta_t_Init unit="seconds">
+                <value>0.01</value>
+                <documentation>Discretisation Step of the integration Method</documentation>
+            </Delta_t_Init>
+            <Iteration_Steps unit="NA">
+                <value>1</value>
+                <documentation>Number of integration method step within one federate cycle</documentation>
+            </Iteration_Steps>
+            <Integration_Method unit="NA">
+                <value>3</value>
+                <documentation>Type of numerical integration method :
+					  0 : None
+					  1 : Euler (Explicit)
+					  2 : Trapezoidal (Explicit)
+					  3 : Adams Bashforth 2 (Explicit)
+					  4 : Adams Bashforth 3 (Explicit)
+				  </documentation>
+            </Integration_Method>
+        </simulation_loop>
+    </FLIGHT_DYNAMICS>
+    <SENSORS federateName="Sensors_Fed">
+		<simulation_loop>
+            <Delta_t_Init unit="seconds">
+                <value>0.01</value>
+                <documentation>Discretisation Step of the integration Method</documentation>
+            </Delta_t_Init>
+            <Iteration_Steps unit="NA">
+                <value>1</value>
+                <documentation>Number of integration method step within one federate cycle</documentation>
+            </Iteration_Steps>
+            <Integration_Method unit="NA">
+                <value>1</value>
+                <possibleValues>[[0,4]]</possibleValues>
+                <documentation>Type of numerical integration method :
+					  0 : None
+					  1 : Euler (Explicit)
+					  2 : Trapezoidal (Explicit)
+					  3 : Adams Bashforth 2 (Explicit)
+					  4 : Adams Bashforth 3 (Explicit)
+				  </documentation>
+            </Integration_Method>
+        </simulation_loop>
+	</SENSORS>
+    <VISUALIZATION federateName="Visualization_Fed">
+		<Flightgear_Net_Config>
+            <UDP_port>
+                <value>5500</value>
+                <documentation>UDP port for communication with flighgear using native protocol</documentation>
+            </UDP_port>
+            <IP_Address>
+                <value>127.0.0.1</value>
+                <documentation>IP Address of the flighgear interface
+                               Note that for localhost IP address is 127.0.0.1</documentation>
+            </IP_Address>
+        </Flightgear_Net_Config>
+	</VISUALIZATION>
+    <PFD federateName="PFD_Fed"/>
+    <ENVIRONMENT federateName="Environment_Fed">
+        <Wind>
+            <WindSpeed unit="m/s">
+                <value>0</value>
+                <possibleValues>[0,150]</possibleValues>
+                <documentation>Speed of the wind in m/s.</documentation>
+            </WindSpeed>
+            <WindPsi unit="deg">
+                <value>0</value>
+                <possibleValues>[-180,180]</possibleValues>
+                <documentation>Angle of the Horizontal wind relatively to the North in degrees.</documentation>
+            </WindPsi>
+            <W20 unit="m/s">
+                <value>0.0</value>
+                <documentation>Windspeed at 6 meters (20 ft) in m/s
+
+This value is used to calculate the Wind Shear as well as the turbulence.
+7.72 m/s (25.31 ft/s) or 15 knots for light turbulence
+15.43 m/s (50.63 ft/s) or 30 knots for moderate turbulence
+23.15 m/s (75.95 ft/s) or 45 knots for severe turbulence</documentation>
+            </W20>
+            <POEindex>
+                <value>1</value>
+                <possibleValues>[[1,7]]</possibleValues>
+                <documentation>Determine the strengh of the turbulence :
+  Probability Of Exceedence index :
+  Index 1 : 2E-1
+  Index 2 : 1E-1
+  Index 3 : 1E-2 (Light)
+  Index 4 : 1E-3 (Moderate)
+  Index 5 : 1E-4
+  Index 6 : 1E-5 (Severe)
+  Index 7 : 1E-6</documentation>
+            </POEindex>
+            <TurbulenceType>
+                <value>0</value>
+                <possibleValues type="enum">None,Dryden,VonKarman</possibleValues>
+                <documentation>Type of filter used to generate the turbulence</documentation>
+            </TurbulenceType>
+        </Wind>
+    </ENVIRONMENT>
+    <COCKPIT federateName="Cockpit_Fed">
+        <FcuInit>
+            <HeadingRef unit="deg">
+                <value>0</value>
+                <possibleValues>[0,359]</possibleValues>
+                <documentation>Reference heading value for the Flight Control Unit</documentation>
+            </HeadingRef>
+            <AltitudeRef unit="m">
+                <value>12000</value>
+                <documentation>Reference altitude value for the Flight Control Unit</documentation>
+            </AltitudeRef>
+            <IasRef unit="m/s">
+                <value>290</value>
+                <documentation>Reference IAS value for the Flight Control Unit</documentation>
+            </IasRef>
+        </FcuInit>
+    </COCKPIT>
+    <DATA_LOGGER federateName="Data_Logger_Fed">
+		<LogFileName unit="NA">
+			<value>sdse_data.csv</value>
+			<documentation>This is the name of your csv log file. Per default this is "sdse_data.csv", 
+						   if you change it you might need to adapt the gnuplot_launcher script.
+			</documentation>
+		</LogFileName>
+		<Granularity unit="NA">
+			<value>20</value>
+			<documentation>How often the logger will write in the text file. Note that the data logger runs at 20 milliseconds loop cycle, 
+			thus a value of 1 means that the data logger will write every 20 ms cycle in the file which can take some cpu ressources.
+			</documentation>
+		</Granularity>
+	</DATA_LOGGER>
+</federation>

@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/new/Images">
+        <file>Cockpitfed.jpg</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/ECAMrc">
+        <file>Images/ecam_background.jpg</file>
+        <file>Images/arrow_red.svg</file>
+        <file>Images/ecam_window_red.svg</file>
+        <file>Images/ecam_window_green.svg</file>
+        <file>Images/arrow_green.svg</file>
+        <file>Images/ecam_scale.svg</file>
+        <file>Images/black_background.svg</file>
+    </qresource>
+</RCC>

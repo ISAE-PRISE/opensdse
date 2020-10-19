@@ -1,0 +1,114 @@
+# ----------------------------------------------------------------------------
+# OpenSDSE - HLA Compliant Distributed Aircraft Simulation
+# Copyright (C) 2017  ISAE
+#
+# This program is free software ; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation ; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY ; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program ; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+#
+# ----------------------------------------------------------------------------
+
+###################################################################################
+# PROJECT NAME : #
+PROJECT(OPEN-SDSE-EXTERNAL-EFCS)
+
+###################################################################################
+# CERTI and SDSE requires CMake 2.8.11 version #
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8.11)
+SET(CMAKE_CXX_FLAGS "-std=c++0x")
+
+##################################################################################
+##################### Change the build type to release ###########################
+####################### when you are ready to release ############################
+##################################################################################
+#SET(CMAKE_BUILD_TYPE "Debug")
+###
+SET(CMAKE_BUILD_TYPE "Release")
+
+#########################################################################
+############## Define your project packaging basics #####################
+#########################################################################
+SET(PACKAGE_NAME      ${CMAKE_PROJECT_NAME})
+SET(DESCRIPTION_SUMMARY "SDSE - Distributed Simulation for Embedded Systems (French acronym) - HLA standard compliant Fligh Simulator.")
+SET(PACKAGE_VERSION_MAJOR "1")
+SET(PACKAGE_VERSION_MINOR "0")
+SET(PACKAGE_VERSION_PATCH "0")
+SET(PACKAGE_VERSION   "${PACKAGE_VERSION_MAJOR}.${PACKAGE_VERSION_MINOR}.${PACKAGE_VERSION_PATCH}")
+###
+SET(PACKAGE_BUGREPORT "jean-baptiste.chaudron@isae.fr")
+SET(PACKAGE_BUGREPORT "david.saussie@polymtl.ca")
+
+MESSAGE(STATUS "Configuring ${PACKAGE_NAME} version ${PACKAGE_VERSION}")
+
+# FOR 02_EFCS FEDERATE #
+SET(2_EFCS_FED_SOURCE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/02_EFCS)
+INCLUDE_DIRECTORIES(${2_EFCS_FED_SOURCE_DIRECTORY}
+					${CMAKE_CURRENT_SOURCE_DIR}/SDSE_CONFIGURATOR
+					)
+					
+# FOR EXTERNAL EFCS #
+SET(EXTERNAL_EFCS_SOURCE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/EXTERNAL_EFCS)
+INCLUDE_DIRECTORIES(${EXTERNAL_EFCS_SOURCE_DIRECTORY}
+					${CMAKE_CURRENT_SOURCE_DIR}/SDSE_CONFIGURATOR
+					)
+                    
+# FOR COMMON SOURCES FILES #
+SET(COMMON_SOURCE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/COMMON)
+INCLUDE_DIRECTORIES(${COMMON_SOURCE_DIRECTORY})
+
+# FOR SDSE_CONFIGURATOR TOOL #
+SET(SDSE_CONFIGURATOR_SOURCE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/SDSE_CONFIGURATOR)
+INCLUDE_DIRECTORIES(${SDSE_CONFIGURATOR_SOURCE_DIRECTORY})
+
+# INIT CONFIGURATION PATH #
+SET(INIT_FILES_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/INIT_FILES)
+        
+SET(EXE_NAME ExternalEfcs)
+SET(SRC_LIST ${EXTERNAL_EFCS_SOURCE_DIRECTORY}/ExternalEfcsMain.cc
+             ${EXTERNAL_EFCS_SOURCE_DIRECTORY}/ExternalEfcs.cc
+             ${2_EFCS_FED_SOURCE_DIRECTORY}/Efcs.cc
+             ${2_EFCS_FED_SOURCE_DIRECTORY}/ControllerPID.cc
+             ${COMMON_SOURCE_DIRECTORY}/SendingSocketUDP.cc
+             ${COMMON_SOURCE_DIRECTORY}/ReceivingSocketUDP.cc
+             ${COMMON_SOURCE_DIRECTORY}/A320.cc
+             ${COMMON_SOURCE_DIRECTORY}/UnitConversion.cc
+             ${COMMON_SOURCE_DIRECTORY}/FGColumnVector3.cc
+             ${COMMON_SOURCE_DIRECTORY}/MessageBuffer.cc
+             ${SDSE_CONFIGURATOR_SOURCE_DIRECTORY}/tinyxml2.cpp
+             ${SDSE_CONFIGURATOR_SOURCE_DIRECTORY}/SdseParametersParser.cc
+             )
+
+ADD_EXECUTABLE(${EXE_NAME} ${SRC_LIST})
+TARGET_LINK_LIBRARIES (${EXE_NAME} pthread rt)
+INSTALL(TARGETS ${EXE_NAME} 
+        RUNTIME DESTINATION bin)
+
+##################################################################################
+# Executable & Files Installation #
+
+
+INSTALL(FILES 
+	${INIT_FILES_DIRECTORY}/sdse_init_parameters.xml
+        DESTINATION bin)
+
+INSTALL(FILES 
+	${INIT_FILES_DIRECTORY}/open_sdse_logo.png
+        DESTINATION bin/..)
+
+MESSAGE(STATUS "************************************************************************")
+MESSAGE(STATUS "************************************************************************")
+MESSAGE(STATUS "**********                                                    **********")
+MESSAGE(STATUS "********** ${CMAKE_PROJECT_NAME} has been successfully configured **********")
+MESSAGE(STATUS "**********                                                    **********")
+MESSAGE(STATUS "************************************************************************")
+MESSAGE(STATUS "************************************************************************")
